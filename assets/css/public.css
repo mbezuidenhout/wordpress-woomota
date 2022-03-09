@@ -1,0 +1,35 @@
+ul.devices li.device {
+	list-style: none;
+	margin-left: 0;
+	margin-bottom: 4.235801032em;
+	text-align: center;
+	position: relative;
+}
+
+.device-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.device-parameter {
+	width: 48%;
+	height: 100px;
+	margin-bottom: 2%;
+	flex-grow: 1;
+}
+
+.device-parameter:nth-child(3n) {
+	width: 100%;
+}
+
+/*.site-main ul.devices.columns-3 li.device {
+	width: 30%;
+	float: left;
+	margin-right: 3.3%
+}*/
+
+ul.devices {
+	display: flex;
+	flex-direction: row;
+}
