@@ -1,6 +1,6 @@
 <?php
 /**
- * Device
+ * Firmware
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * Device Class Doc Comment
+ * Firmware Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Device implements ModelInterface, ArrayAccess
+class Firmware implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Device implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Device';
+    protected static $swaggerModelName = 'Firmware';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,13 +56,10 @@ class Device implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'topic' => 'string',
-'full_topic' => 'string',
-'online' => 'bool',
-'load_avg' => 'int',
-'timezone' => 'string',
-'status_net' => '\Swagger\Client\Model\Network',
-'status_fwr' => '\Swagger\Client\Model\Firmware'    ];
+        'version' => 'string',
+'build_date_time' => 'string',
+'boot' => 'int',
+'hardware' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -70,13 +67,10 @@ class Device implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'topic' => null,
-'full_topic' => null,
-'online' => null,
-'load_avg' => null,
-'timezone' => null,
-'status_net' => null,
-'status_fwr' => null    ];
+        'version' => null,
+'build_date_time' => null,
+'boot' => null,
+'hardware' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -105,13 +99,10 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'topic' => 'Topic',
-'full_topic' => 'FullTopic',
-'online' => 'Online',
-'load_avg' => 'LoadAvg',
-'timezone' => 'Timezone',
-'status_net' => 'StatusNET',
-'status_fwr' => 'StatusFWR'    ];
+        'version' => 'Version',
+'build_date_time' => 'BuildDateTime',
+'boot' => 'Boot',
+'hardware' => 'Hardware'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -119,13 +110,10 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'topic' => 'setTopic',
-'full_topic' => 'setFullTopic',
-'online' => 'setOnline',
-'load_avg' => 'setLoadAvg',
-'timezone' => 'setTimezone',
-'status_net' => 'setStatusNet',
-'status_fwr' => 'setStatusFwr'    ];
+        'version' => 'setVersion',
+'build_date_time' => 'setBuildDateTime',
+'boot' => 'setBoot',
+'hardware' => 'setHardware'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -133,13 +121,10 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'topic' => 'getTopic',
-'full_topic' => 'getFullTopic',
-'online' => 'getOnline',
-'load_avg' => 'getLoadAvg',
-'timezone' => 'getTimezone',
-'status_net' => 'getStatusNet',
-'status_fwr' => 'getStatusFwr'    ];
+        'version' => 'getVersion',
+'build_date_time' => 'getBuildDateTime',
+'boot' => 'getBoot',
+'hardware' => 'getHardware'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -199,13 +184,10 @@ class Device implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['topic'] = isset($data['topic']) ? $data['topic'] : null;
-        $this->container['full_topic'] = isset($data['full_topic']) ? $data['full_topic'] : null;
-        $this->container['online'] = isset($data['online']) ? $data['online'] : null;
-        $this->container['load_avg'] = isset($data['load_avg']) ? $data['load_avg'] : null;
-        $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
-        $this->container['status_net'] = isset($data['status_net']) ? $data['status_net'] : null;
-        $this->container['status_fwr'] = isset($data['status_fwr']) ? $data['status_fwr'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
+        $this->container['build_date_time'] = isset($data['build_date_time']) ? $data['build_date_time'] : null;
+        $this->container['boot'] = isset($data['boot']) ? $data['boot'] : null;
+        $this->container['hardware'] = isset($data['hardware']) ? $data['hardware'] : null;
     }
 
     /**
@@ -217,15 +199,6 @@ class Device implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['topic'] === null) {
-            $invalidProperties[] = "'topic' can't be null";
-        }
-        if ($this->container['full_topic'] === null) {
-            $invalidProperties[] = "'full_topic' can't be null";
-        }
-        if ($this->container['online'] === null) {
-            $invalidProperties[] = "'online' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -242,169 +215,97 @@ class Device implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets topic
+     * Gets version
      *
      * @return string
      */
-    public function getTopic()
+    public function getVersion()
     {
-        return $this->container['topic'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets topic
+     * Sets version
      *
-     * @param string $topic Unique device topic
+     * @param string $version version
      *
      * @return $this
      */
-    public function setTopic($topic)
+    public function setVersion($version)
     {
-        $this->container['topic'] = $topic;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets full_topic
+     * Gets build_date_time
      *
      * @return string
      */
-    public function getFullTopic()
+    public function getBuildDateTime()
     {
-        return $this->container['full_topic'];
+        return $this->container['build_date_time'];
     }
 
     /**
-     * Sets full_topic
+     * Sets build_date_time
      *
-     * @param string $full_topic Full topic format
+     * @param string $build_date_time build_date_time
      *
      * @return $this
      */
-    public function setFullTopic($full_topic)
+    public function setBuildDateTime($build_date_time)
     {
-        $this->container['full_topic'] = $full_topic;
+        $this->container['build_date_time'] = $build_date_time;
 
         return $this;
     }
 
     /**
-     * Gets online
-     *
-     * @return bool
-     */
-    public function getOnline()
-    {
-        return $this->container['online'];
-    }
-
-    /**
-     * Sets online
-     *
-     * @param bool $online Device status
-     *
-     * @return $this
-     */
-    public function setOnline($online)
-    {
-        $this->container['online'] = $online;
-
-        return $this;
-    }
-
-    /**
-     * Gets load_avg
+     * Gets boot
      *
      * @return int
      */
-    public function getLoadAvg()
+    public function getBoot()
     {
-        return $this->container['load_avg'];
+        return $this->container['boot'];
     }
 
     /**
-     * Sets load_avg
+     * Sets boot
      *
-     * @param int $load_avg Load Average
+     * @param int $boot boot
      *
      * @return $this
      */
-    public function setLoadAvg($load_avg)
+    public function setBoot($boot)
     {
-        $this->container['load_avg'] = $load_avg;
+        $this->container['boot'] = $boot;
 
         return $this;
     }
 
     /**
-     * Gets timezone
+     * Gets hardware
      *
      * @return string
      */
-    public function getTimezone()
+    public function getHardware()
     {
-        return $this->container['timezone'];
+        return $this->container['hardware'];
     }
 
     /**
-     * Sets timezone
+     * Sets hardware
      *
-     * @param string $timezone Timezone offset from GMT
+     * @param string $hardware hardware
      *
      * @return $this
      */
-    public function setTimezone($timezone)
+    public function setHardware($hardware)
     {
-        $this->container['timezone'] = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_net
-     *
-     * @return \Swagger\Client\Model\Network
-     */
-    public function getStatusNet()
-    {
-        return $this->container['status_net'];
-    }
-
-    /**
-     * Sets status_net
-     *
-     * @param \Swagger\Client\Model\Network $status_net status_net
-     *
-     * @return $this
-     */
-    public function setStatusNet($status_net)
-    {
-        $this->container['status_net'] = $status_net;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_fwr
-     *
-     * @return \Swagger\Client\Model\Firmware
-     */
-    public function getStatusFwr()
-    {
-        return $this->container['status_fwr'];
-    }
-
-    /**
-     * Sets status_fwr
-     *
-     * @param \Swagger\Client\Model\Firmware $status_fwr status_fwr
-     *
-     * @return $this
-     */
-    public function setStatusFwr($status_fwr)
-    {
-        $this->container['status_fwr'] = $status_fwr;
+        $this->container['hardware'] = $hardware;
 
         return $this;
     }

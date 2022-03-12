@@ -16,16 +16,16 @@ defined( 'ABSPATH' ) || exit;
 global $tdm_device, $tdm_device_name;
 ?>
 <div class="device-container">
-	<div class="device-parameter device-name"><?php esc_html_e( $tdm_device_name, TDM_TEXTDOMAIN ) ?>
-		<?php echo (false === $tdm_device->getOnline() ? '<i class="fa fa-chain-broken" aria-hidden="true" />' : '<i class="fa fa-link" aria-hidden="true" />') ?>
-	</div>
-	<?php if($tdm_device->getStatusNet() instanceof \Swagger\Client\Model\Network ): ?>
+	<div class="device-name"><?php esc_html_e( $tdm_device_name, TDM_TEXTDOMAIN ) ?>
 		<?php
-			if (true === $tdm_device->getOnline()) :
-				printf( '<a href="%s" target="_blank"><i class="fas fa-external-link-alt" /></a>', esc_url( 'http://' . $tdm_device->getStatusNet()->getIpAddress() ) );
-			endif;
+		if ($tdm_device->getOnline() && $tdm_device->getStatusNet() instanceof \Swagger\Client\Model\Network) :
+			printf( '<a href="%s" target="_blank"><i class="fas fa-external-link-alt"></i></a>', esc_url( 'http://' . $tdm_device->getStatusNet()->getIpAddress() ) );
+		else: ?>
+			<i class="fa fa-unlink" aria-hidden="true"></i>
+		<?php
+		endif;
 		?>
-
-	<?php endif; ?>
+	</div>
+	<div class="device-parameter device-version">Version</div>
 	<div class="device-parameter">Signal</div>
 </div>
