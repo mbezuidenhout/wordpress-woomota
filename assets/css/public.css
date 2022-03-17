@@ -19,6 +19,10 @@ ul.devices li.device {
 	flex-grow: 1;
 }
 
+.device-name {
+	width: 100%;
+}
+
 .device-parameter:nth-child(3n) {
 	width: 100%;
 }
@@ -32,4 +36,6 @@ ul.devices li.device {
 ul.devices {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }

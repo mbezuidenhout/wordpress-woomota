@@ -1,6 +1,6 @@
 <?php
 /**
- * Device
+ * Zigbee
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * Device Class Doc Comment
+ * Zigbee Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Device implements ModelInterface, ArrayAccess
+class Zigbee implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Device implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Device';
+    protected static $swaggerModelName = 'Zigbee';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,15 +56,14 @@ class Device implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'topic' => 'string',
-'full_topic' => 'string',
+        'device' => 'string',
 'name' => 'string',
-'module' => 'string',
-'online' => 'bool',
-'load_avg' => 'int',
-'timezone' => 'string',
-'status_net' => '\Swagger\Client\Model\Network',
-'status_fwr' => '\Swagger\Client\Model\Firmware'    ];
+'model_id' => 'string',
+'temperature' => 'float',
+'humidity' => 'float',
+'battery_percentage' => 'int',
+'last_seen' => 'int',
+'reachable' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,15 +71,14 @@ class Device implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'topic' => null,
-'full_topic' => null,
+        'device' => null,
 'name' => null,
-'module' => null,
-'online' => null,
-'load_avg' => null,
-'timezone' => null,
-'status_net' => null,
-'status_fwr' => null    ];
+'model_id' => null,
+'temperature' => null,
+'humidity' => null,
+'battery_percentage' => null,
+'last_seen' => null,
+'reachable' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -109,15 +107,14 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'topic' => 'Topic',
-'full_topic' => 'FullTopic',
+        'device' => 'Device',
 'name' => 'Name',
-'module' => 'Module',
-'online' => 'Online',
-'load_avg' => 'LoadAvg',
-'timezone' => 'Timezone',
-'status_net' => 'StatusNET',
-'status_fwr' => 'StatusFWR'    ];
+'model_id' => 'ModelId',
+'temperature' => 'Temperature',
+'humidity' => 'Humidity',
+'battery_percentage' => 'BatteryPercentage',
+'last_seen' => 'LastSeen',
+'reachable' => 'Reachable'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -125,15 +122,14 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'topic' => 'setTopic',
-'full_topic' => 'setFullTopic',
+        'device' => 'setDevice',
 'name' => 'setName',
-'module' => 'setModule',
-'online' => 'setOnline',
-'load_avg' => 'setLoadAvg',
-'timezone' => 'setTimezone',
-'status_net' => 'setStatusNet',
-'status_fwr' => 'setStatusFwr'    ];
+'model_id' => 'setModelId',
+'temperature' => 'setTemperature',
+'humidity' => 'setHumidity',
+'battery_percentage' => 'setBatteryPercentage',
+'last_seen' => 'setLastSeen',
+'reachable' => 'setReachable'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -141,15 +137,14 @@ class Device implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'topic' => 'getTopic',
-'full_topic' => 'getFullTopic',
+        'device' => 'getDevice',
 'name' => 'getName',
-'module' => 'getModule',
-'online' => 'getOnline',
-'load_avg' => 'getLoadAvg',
-'timezone' => 'getTimezone',
-'status_net' => 'getStatusNet',
-'status_fwr' => 'getStatusFwr'    ];
+'model_id' => 'getModelId',
+'temperature' => 'getTemperature',
+'humidity' => 'getHumidity',
+'battery_percentage' => 'getBatteryPercentage',
+'last_seen' => 'getLastSeen',
+'reachable' => 'getReachable'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -209,15 +204,14 @@ class Device implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['topic'] = isset($data['topic']) ? $data['topic'] : null;
-        $this->container['full_topic'] = isset($data['full_topic']) ? $data['full_topic'] : null;
+        $this->container['device'] = isset($data['device']) ? $data['device'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['module'] = isset($data['module']) ? $data['module'] : null;
-        $this->container['online'] = isset($data['online']) ? $data['online'] : null;
-        $this->container['load_avg'] = isset($data['load_avg']) ? $data['load_avg'] : null;
-        $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
-        $this->container['status_net'] = isset($data['status_net']) ? $data['status_net'] : null;
-        $this->container['status_fwr'] = isset($data['status_fwr']) ? $data['status_fwr'] : null;
+        $this->container['model_id'] = isset($data['model_id']) ? $data['model_id'] : null;
+        $this->container['temperature'] = isset($data['temperature']) ? $data['temperature'] : null;
+        $this->container['humidity'] = isset($data['humidity']) ? $data['humidity'] : null;
+        $this->container['battery_percentage'] = isset($data['battery_percentage']) ? $data['battery_percentage'] : null;
+        $this->container['last_seen'] = isset($data['last_seen']) ? $data['last_seen'] : null;
+        $this->container['reachable'] = isset($data['reachable']) ? $data['reachable'] : null;
     }
 
     /**
@@ -229,15 +223,6 @@ class Device implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['topic'] === null) {
-            $invalidProperties[] = "'topic' can't be null";
-        }
-        if ($this->container['full_topic'] === null) {
-            $invalidProperties[] = "'full_topic' can't be null";
-        }
-        if ($this->container['online'] === null) {
-            $invalidProperties[] = "'online' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -254,49 +239,25 @@ class Device implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets topic
+     * Gets device
      *
      * @return string
      */
-    public function getTopic()
+    public function getDevice()
     {
-        return $this->container['topic'];
+        return $this->container['device'];
     }
 
     /**
-     * Sets topic
+     * Sets device
      *
-     * @param string $topic Unique device topic
+     * @param string $device device
      *
      * @return $this
      */
-    public function setTopic($topic)
+    public function setDevice($device)
     {
-        $this->container['topic'] = $topic;
-
-        return $this;
-    }
-
-    /**
-     * Gets full_topic
-     *
-     * @return string
-     */
-    public function getFullTopic()
-    {
-        return $this->container['full_topic'];
-    }
-
-    /**
-     * Sets full_topic
-     *
-     * @param string $full_topic Full topic format
-     *
-     * @return $this
-     */
-    public function setFullTopic($full_topic)
-    {
-        $this->container['full_topic'] = $full_topic;
+        $this->container['device'] = $device;
 
         return $this;
     }
@@ -314,7 +275,7 @@ class Device implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Device friendly name
+     * @param string $name name
      *
      * @return $this
      */
@@ -326,145 +287,145 @@ class Device implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets module
+     * Gets model_id
      *
      * @return string
      */
-    public function getModule()
+    public function getModelId()
     {
-        return $this->container['module'];
+        return $this->container['model_id'];
     }
 
     /**
-     * Sets module
+     * Sets model_id
      *
-     * @param string $module Device module type
+     * @param string $model_id model_id
      *
      * @return $this
      */
-    public function setModule($module)
+    public function setModelId($model_id)
     {
-        $this->container['module'] = $module;
+        $this->container['model_id'] = $model_id;
 
         return $this;
     }
 
     /**
-     * Gets online
+     * Gets temperature
      *
-     * @return bool
+     * @return float
      */
-    public function getOnline()
+    public function getTemperature()
     {
-        return $this->container['online'];
+        return $this->container['temperature'];
     }
 
     /**
-     * Sets online
+     * Sets temperature
      *
-     * @param bool $online Device status
+     * @param float $temperature temperature
      *
      * @return $this
      */
-    public function setOnline($online)
+    public function setTemperature($temperature)
     {
-        $this->container['online'] = $online;
+        $this->container['temperature'] = $temperature;
 
         return $this;
     }
 
     /**
-     * Gets load_avg
+     * Gets humidity
+     *
+     * @return float
+     */
+    public function getHumidity()
+    {
+        return $this->container['humidity'];
+    }
+
+    /**
+     * Sets humidity
+     *
+     * @param float $humidity humidity
+     *
+     * @return $this
+     */
+    public function setHumidity($humidity)
+    {
+        $this->container['humidity'] = $humidity;
+
+        return $this;
+    }
+
+    /**
+     * Gets battery_percentage
      *
      * @return int
      */
-    public function getLoadAvg()
+    public function getBatteryPercentage()
     {
-        return $this->container['load_avg'];
+        return $this->container['battery_percentage'];
     }
 
     /**
-     * Sets load_avg
+     * Sets battery_percentage
      *
-     * @param int $load_avg Load Average
+     * @param int $battery_percentage battery_percentage
      *
      * @return $this
      */
-    public function setLoadAvg($load_avg)
+    public function setBatteryPercentage($battery_percentage)
     {
-        $this->container['load_avg'] = $load_avg;
+        $this->container['battery_percentage'] = $battery_percentage;
 
         return $this;
     }
 
     /**
-     * Gets timezone
+     * Gets last_seen
      *
-     * @return string
+     * @return int
      */
-    public function getTimezone()
+    public function getLastSeen()
     {
-        return $this->container['timezone'];
+        return $this->container['last_seen'];
     }
 
     /**
-     * Sets timezone
+     * Sets last_seen
      *
-     * @param string $timezone Timezone offset from GMT
+     * @param int $last_seen Last seen in seconds since queried
      *
      * @return $this
      */
-    public function setTimezone($timezone)
+    public function setLastSeen($last_seen)
     {
-        $this->container['timezone'] = $timezone;
+        $this->container['last_seen'] = $last_seen;
 
         return $this;
     }
 
     /**
-     * Gets status_net
+     * Gets reachable
      *
-     * @return \Swagger\Client\Model\Network
+     * @return bool
      */
-    public function getStatusNet()
+    public function getReachable()
     {
-        return $this->container['status_net'];
+        return $this->container['reachable'];
     }
 
     /**
-     * Sets status_net
+     * Sets reachable
      *
-     * @param \Swagger\Client\Model\Network $status_net status_net
+     * @param bool $reachable reachable
      *
      * @return $this
      */
-    public function setStatusNet($status_net)
+    public function setReachable($reachable)
     {
-        $this->container['status_net'] = $status_net;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_fwr
-     *
-     * @return \Swagger\Client\Model\Firmware
-     */
-    public function getStatusFwr()
-    {
-        return $this->container['status_fwr'];
-    }
-
-    /**
-     * Sets status_fwr
-     *
-     * @param \Swagger\Client\Model\Firmware $status_fwr status_fwr
-     *
-     * @return $this
-     */
-    public function setStatusFwr($status_fwr)
-    {
-        $this->container['status_fwr'] = $status_fwr;
+        $this->container['reachable'] = $reachable;
 
         return $this;
     }

@@ -160,16 +160,26 @@ class Swagger extends Base {
 			new \GuzzleHttp\Client(['verify' => false]),
 			$authConfig
 		);
+		/**
+		 * @var $devices Device[]
+		 */
 		$devices = $deviceApiInstance->devicesPost();
+
+		$sensorApiInstance = new \Swagger\Client\Api\SensorApi(
+		// If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+		// This is optional, `GuzzleHttp\Client` will be used as default.
+			new \GuzzleHttp\Client(['verify' => false]),
+			$authConfig
+		);
 
 		if ( $show )
 		{
-			global $tdm_device, $tdm_device_name;
+			global $tdm_device, $sensors;
 			if (is_array( $devices ) ) :
 				foreach ( $devices as $device_name => $device_properties ) :
 					echo "<li class=\"device\">";
 					$tdm_device      = $device_properties;
-					$tdm_device_name = $device_name;
+					$sensors         = $sensorApiInstance->sensorsDeviceTopicGet( $device_properties->getTopic() );
 					\wpbp_get_template_part( TDM_TEXTDOMAIN, 'content-widget', 'device', true );
 					echo "</li>";
 				endforeach; // End of the loop.

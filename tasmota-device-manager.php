@@ -8,8 +8,8 @@
  * @link      https://profiles.wordpress.org/mbezuidenhout/
  *
  * Plugin Name:     Tasmota Device Manager
- * Plugin URI:      @TODO
- * Description:     @TODO
+ * Plugin URI:      https://github.com/mbezuidenhout/wordpress-woomota/
+ * Description:     Get telemetry data from your Tasmota devices. Requires an MQTT connection.
  * Version:         1.0.0
  * Author:          Marius Bezuidenhout
  * Author URI:      https://profiles.wordpress.org/mbezuidenhout/
@@ -72,14 +72,14 @@ require_once TDM_PLUGIN_ROOT . 'functions/debug.php';
 // Add your new plugin on the wiki: https://github.com/WPBP/WordPress-Plugin-Boilerplate-Powered/wiki/Plugin-made-with-this-Boilerplate
 
 $requirements = new \Micropackage\Requirements\Requirements(
-	'Plugin Name',
+	'Tasmota Device Manager',
 	array(
 		'php'            => TDM_MIN_PHP_VERSION,
 		'php_extensions' => array( 'mbstring' ),
 		'wp'             => TDM_WP_VERSION,
-		// 'plugins'            => array(
-		// array( 'file' => 'hello-dolly/hello.php', 'name' => 'Hello Dolly', 'version' => '1.5' )
-		// ),
+		'plugins'            => array(
+			array( 'file' => 'font-awesome/index.php', 'name' => 'Font Awesome', 'version' => '4.1.1' )
+		),
 	)
 );
 /*

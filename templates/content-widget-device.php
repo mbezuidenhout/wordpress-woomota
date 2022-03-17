@@ -7,16 +7,20 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package storefront
  */
 
 defined( 'ABSPATH' ) || exit;
 
-/** @var $tdm_device \Swagger\Client\Model\Device */
-global $tdm_device, $tdm_device_name;
+/**
+ * @var \Swagger\Client\Model\Device $tdm_device
+ * $sensors is a multi-dimensional array of sensors connected to the device
+ */
+global $tdm_device, $sensors;
+
+
 ?>
 <div class="device-container">
-	<div class="device-name"><?php esc_html_e( $tdm_device_name, TDM_TEXTDOMAIN ) ?>
+	<div class="device-name"><?php esc_html_e( $tdm_device->getName(), TDM_TEXTDOMAIN ) ?>
 		<?php
 		if ($tdm_device->getOnline() && $tdm_device->getStatusNet() instanceof \Swagger\Client\Model\Network) :
 			printf( '<a href="%s" target="_blank"><i class="fas fa-external-link-alt"></i></a>', esc_url( 'http://' . $tdm_device->getStatusNet()->getIpAddress() ) );
@@ -26,6 +30,16 @@ global $tdm_device, $tdm_device_name;
 		endif;
 		?>
 	</div>
-	<div class="device-parameter device-version">Version</div>
-	<div class="device-parameter">Signal</div>
+	<div class="device-parameter device-version"><?php echo $tdm_device->getStatusFwr()->getVersion() ?></div>
+	<?php
+	if ( key_exists("Zigbee", $sensors) ) :
+		foreach ( $sensors["Zigbee"] as $sensor ) : ?>
+			<div class="device-parameter"><?php echo key_exists("Name", $sensor)?$sensor["Name"]:$sensor["Device"] ?></div>
+			<div class="device-parameter"><?php echo $sensor["Temperature"] ?>°C</div>
+			<div class="device-parameter"><?php echo $sensor["Humidity"] ?>%</div>
+			<div class="device-parameter"><?php echo $sensor["BatteryPercentage"] ?>%</div>
+		<?php
+		endforeach;
+	endif;
+	?>
 </div>

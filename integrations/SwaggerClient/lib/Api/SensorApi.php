@@ -1,6 +1,6 @@
 <?php
 /**
- * SessionApi
+ * SensorApi
  * PHP version 5
  *
  * @category Class
@@ -39,14 +39,14 @@ use Swagger\Client\HeaderSelector;
 use Swagger\Client\ObjectSerializer;
 
 /**
- * SessionApi Class Doc Comment
+ * SensorApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SessionApi
+class SensorApi
 {
     /**
      * @var ClientInterface
@@ -87,37 +87,39 @@ class SessionApi
     }
 
     /**
-     * Operation mqttConnectPost
+     * Operation sensorTypeDeviceTopicSensorTypeGet
      *
-     * Sets the MQTT host options
+     * Returns all data for specific sensor type.
      *
-     * @param  \Swagger\Client\Model\MQTTOptions $body MQTT host in the format tcp://host:port with username and password (optional)
+     * @param  string $device_topic device_topic (required)
+     * @param  string $sensor_type sensor_type (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Session
+     * @return map[string,object]
      */
-    public function mqttConnectPost($body = null)
+    public function sensorTypeDeviceTopicSensorTypeGet($device_topic, $sensor_type)
     {
-        list($response) = $this->mqttConnectPostWithHttpInfo($body);
+        list($response) = $this->sensorTypeDeviceTopicSensorTypeGetWithHttpInfo($device_topic, $sensor_type);
         return $response;
     }
 
     /**
-     * Operation mqttConnectPostWithHttpInfo
+     * Operation sensorTypeDeviceTopicSensorTypeGetWithHttpInfo
      *
-     * Sets the MQTT host options
+     * Returns all data for specific sensor type.
      *
-     * @param  \Swagger\Client\Model\MQTTOptions $body MQTT host in the format tcp://host:port with username and password (optional)
+     * @param  string $device_topic (required)
+     * @param  string $sensor_type (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Session, HTTP status code, HTTP response headers (array of strings)
+     * @return array of map[string,object], HTTP status code, HTTP response headers (array of strings)
      */
-    public function mqttConnectPostWithHttpInfo($body = null)
+    public function sensorTypeDeviceTopicSensorTypeGetWithHttpInfo($device_topic, $sensor_type)
     {
-        $returnType = '\Swagger\Client\Model\Session';
-        $request = $this->mqttConnectPostRequest($body);
+        $returnType = 'map[string,object]';
+        $request = $this->sensorTypeDeviceTopicSensorTypeGetRequest($device_topic, $sensor_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -168,7 +170,7 @@ class SessionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Session',
+                        'map[string,object]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -179,18 +181,19 @@ class SessionApi
     }
 
     /**
-     * Operation mqttConnectPostAsync
+     * Operation sensorTypeDeviceTopicSensorTypeGetAsync
      *
-     * Sets the MQTT host options
+     * Returns all data for specific sensor type.
      *
-     * @param  \Swagger\Client\Model\MQTTOptions $body MQTT host in the format tcp://host:port with username and password (optional)
+     * @param  string $device_topic (required)
+     * @param  string $sensor_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mqttConnectPostAsync($body = null)
+    public function sensorTypeDeviceTopicSensorTypeGetAsync($device_topic, $sensor_type)
     {
-        return $this->mqttConnectPostAsyncWithHttpInfo($body)
+        return $this->sensorTypeDeviceTopicSensorTypeGetAsyncWithHttpInfo($device_topic, $sensor_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -199,19 +202,20 @@ class SessionApi
     }
 
     /**
-     * Operation mqttConnectPostAsyncWithHttpInfo
+     * Operation sensorTypeDeviceTopicSensorTypeGetAsyncWithHttpInfo
      *
-     * Sets the MQTT host options
+     * Returns all data for specific sensor type.
      *
-     * @param  \Swagger\Client\Model\MQTTOptions $body MQTT host in the format tcp://host:port with username and password (optional)
+     * @param  string $device_topic (required)
+     * @param  string $sensor_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mqttConnectPostAsyncWithHttpInfo($body = null)
+    public function sensorTypeDeviceTopicSensorTypeGetAsyncWithHttpInfo($device_topic, $sensor_type)
     {
-        $returnType = '\Swagger\Client\Model\Session';
-        $request = $this->mqttConnectPostRequest($body);
+        $returnType = 'map[string,object]';
+        $request = $this->sensorTypeDeviceTopicSensorTypeGetRequest($device_topic, $sensor_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -251,17 +255,30 @@ class SessionApi
     }
 
     /**
-     * Create request for operation 'mqttConnectPost'
+     * Create request for operation 'sensorTypeDeviceTopicSensorTypeGet'
      *
-     * @param  \Swagger\Client\Model\MQTTOptions $body MQTT host in the format tcp://host:port with username and password (optional)
+     * @param  string $device_topic (required)
+     * @param  string $sensor_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function mqttConnectPostRequest($body = null)
+    protected function sensorTypeDeviceTopicSensorTypeGetRequest($device_topic, $sensor_type)
     {
+        // verify the required parameter 'device_topic' is set
+        if ($device_topic === null || (is_array($device_topic) && count($device_topic) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $device_topic when calling sensorTypeDeviceTopicSensorTypeGet'
+            );
+        }
+        // verify the required parameter 'sensor_type' is set
+        if ($sensor_type === null || (is_array($sensor_type) && count($sensor_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $sensor_type when calling sensorTypeDeviceTopicSensorTypeGet'
+            );
+        }
 
-        $resourcePath = '/mqtt/connect';
+        $resourcePath = '/sensorType/{deviceTopic}/{sensorType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -269,12 +286,25 @@ class SessionApi
         $multipart = false;
 
 
+        // path params
+        if ($device_topic !== null) {
+            $resourcePath = str_replace(
+                '{' . 'deviceTopic' . '}',
+                ObjectSerializer::toPathValue($device_topic),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($sensor_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'sensorType' . '}',
+                ObjectSerializer::toPathValue($sensor_type),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -283,212 +313,6 @@ class SessionApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/json', 'examples']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation mqttDisconnectGet
-     *
-     * Disconnect from MQTT server
-     *
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function mqttDisconnectGet()
-    {
-        $this->mqttDisconnectGetWithHttpInfo();
-    }
-
-    /**
-     * Operation mqttDisconnectGetWithHttpInfo
-     *
-     * Disconnect from MQTT server
-     *
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function mqttDisconnectGetWithHttpInfo()
-    {
-        $returnType = '';
-        $request = $this->mqttDisconnectGetRequest();
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation mqttDisconnectGetAsync
-     *
-     * Disconnect from MQTT server
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function mqttDisconnectGetAsync()
-    {
-        return $this->mqttDisconnectGetAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation mqttDisconnectGetAsyncWithHttpInfo
-     *
-     * Disconnect from MQTT server
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function mqttDisconnectGetAsyncWithHttpInfo()
-    {
-        $returnType = '';
-        $request = $this->mqttDisconnectGetRequest();
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'mqttDisconnectGet'
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function mqttDisconnectGetRequest()
-    {
-
-        $resourcePath = '/mqtt/disconnect';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [],
                 []
             );
         }
@@ -549,34 +373,37 @@ class SessionApi
     }
 
     /**
-     * Operation mqttGet
+     * Operation sensorTypesDeviceTopicGet
      *
-     * Get MQTT session status
+     * Returns an array of sensor types.
      *
+     * @param  string $device_topic device_topic (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string[]
      */
-    public function mqttGet()
+    public function sensorTypesDeviceTopicGet($device_topic)
     {
-        $this->mqttGetWithHttpInfo();
+        list($response) = $this->sensorTypesDeviceTopicGetWithHttpInfo($device_topic);
+        return $response;
     }
 
     /**
-     * Operation mqttGetWithHttpInfo
+     * Operation sensorTypesDeviceTopicGetWithHttpInfo
      *
-     * Get MQTT session status
+     * Returns an array of sensor types.
      *
+     * @param  string $device_topic (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function mqttGetWithHttpInfo()
+    public function sensorTypesDeviceTopicGetWithHttpInfo($device_topic)
     {
-        $returnType = '';
-        $request = $this->mqttGetRequest();
+        $returnType = 'string[]';
+        $request = $this->sensorTypesDeviceTopicGetRequest($device_topic);
 
         try {
             $options = $this->createHttpClientOption();
@@ -606,27 +433,50 @@ class SessionApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation mqttGetAsync
+     * Operation sensorTypesDeviceTopicGetAsync
      *
-     * Get MQTT session status
+     * Returns an array of sensor types.
      *
+     * @param  string $device_topic (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mqttGetAsync()
+    public function sensorTypesDeviceTopicGetAsync($device_topic)
     {
-        return $this->mqttGetAsyncWithHttpInfo()
+        return $this->sensorTypesDeviceTopicGetAsyncWithHttpInfo($device_topic)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -635,24 +485,39 @@ class SessionApi
     }
 
     /**
-     * Operation mqttGetAsyncWithHttpInfo
+     * Operation sensorTypesDeviceTopicGetAsyncWithHttpInfo
      *
-     * Get MQTT session status
+     * Returns an array of sensor types.
      *
+     * @param  string $device_topic (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function mqttGetAsyncWithHttpInfo()
+    public function sensorTypesDeviceTopicGetAsyncWithHttpInfo($device_topic)
     {
-        $returnType = '';
-        $request = $this->mqttGetRequest();
+        $returnType = 'string[]';
+        $request = $this->sensorTypesDeviceTopicGetRequest($device_topic);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -672,16 +537,23 @@ class SessionApi
     }
 
     /**
-     * Create request for operation 'mqttGet'
+     * Create request for operation 'sensorTypesDeviceTopicGet'
      *
+     * @param  string $device_topic (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function mqttGetRequest()
+    protected function sensorTypesDeviceTopicGetRequest($device_topic)
     {
+        // verify the required parameter 'device_topic' is set
+        if ($device_topic === null || (is_array($device_topic) && count($device_topic) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $device_topic when calling sensorTypesDeviceTopicGet'
+            );
+        }
 
-        $resourcePath = '/mqtt';
+        $resourcePath = '/sensorTypes/{deviceTopic}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -689,17 +561,292 @@ class SessionApi
         $multipart = false;
 
 
+        // path params
+        if ($device_topic !== null) {
+            $resourcePath = str_replace(
+                '{' . 'deviceTopic' . '}',
+                ObjectSerializer::toPathValue($device_topic),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
+        if ($apiKey !== null) {
+            $headers['X-API-KEY'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sensorsDeviceTopicGet
+     *
+     * Returns all sensor data from device.
+     *
+     * @param  string $device_topic device_topic (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return map[string,map[string,object]]
+     */
+    public function sensorsDeviceTopicGet($device_topic)
+    {
+        list($response) = $this->sensorsDeviceTopicGetWithHttpInfo($device_topic);
+        return $response;
+    }
+
+    /**
+     * Operation sensorsDeviceTopicGetWithHttpInfo
+     *
+     * Returns all sensor data from device.
+     *
+     * @param  string $device_topic (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of map[string,map[string,object]], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sensorsDeviceTopicGetWithHttpInfo($device_topic)
+    {
+        $returnType = 'map[string,map[string,object]]';
+        $request = $this->sensorsDeviceTopicGetRequest($device_topic);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'map[string,map[string,object]]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sensorsDeviceTopicGetAsync
+     *
+     * Returns all sensor data from device.
+     *
+     * @param  string $device_topic (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sensorsDeviceTopicGetAsync($device_topic)
+    {
+        return $this->sensorsDeviceTopicGetAsyncWithHttpInfo($device_topic)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sensorsDeviceTopicGetAsyncWithHttpInfo
+     *
+     * Returns all sensor data from device.
+     *
+     * @param  string $device_topic (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sensorsDeviceTopicGetAsyncWithHttpInfo($device_topic)
+    {
+        $returnType = 'map[string,map[string,object]]';
+        $request = $this->sensorsDeviceTopicGetRequest($device_topic);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sensorsDeviceTopicGet'
+     *
+     * @param  string $device_topic (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function sensorsDeviceTopicGetRequest($device_topic)
+    {
+        // verify the required parameter 'device_topic' is set
+        if ($device_topic === null || (is_array($device_topic) && count($device_topic) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $device_topic when calling sensorsDeviceTopicGet'
+            );
+        }
+
+        $resourcePath = '/sensors/{deviceTopic}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($device_topic !== null) {
+            $resourcePath = str_replace(
+                '{' . 'deviceTopic' . '}',
+                ObjectSerializer::toPathValue($device_topic),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
                 []
             );
         }
