@@ -1,5 +1,5 @@
 ---
-parameters:
+grumphp:
   git_dir: .
   bin_dir: composer/bin
   ignore_unstaged_changes: false

@@ -1,8 +1,16 @@
 (function($) {
 	'use strict';
 	$(function() {
-		// Write in console log the PHP value passed in enqueue_js_vars in public/class-plugin-name.php
-		console.log(pn_js_vars.alert);
+		$(".sc-controller .settings").on("click", function(e) {
+			console.log($(this).data("controller-id") + "-settings");
+			$("#" + $(this).data("controller-id") + "-settings").toggleClass("show");
+			e.preventDefault();
+		});
+		$(".sc-sensor .settings").on("click", function(e) {
+			console.log($(this).data("sensor-id") + "-settings");
+			$("#" + $(this).data("sensor-id") + "-settings").toggleClass("show");
+			e.preventDefault();
+		});
 	});
 // Place your public-facing JavaScript here
 })(jQuery);

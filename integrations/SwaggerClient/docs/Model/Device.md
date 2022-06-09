@@ -5,11 +5,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **topic** | **string** | Unique device topic | 
 **full_topic** | **string** | Full topic format | 
-**name** | **string** | Device friendly name | [optional] 
+**device_name** | **string** | Device friendly name | [optional] 
 **module** | **string** | Device module type | [optional] 
 **online** | **bool** | Device status | 
 **load_avg** | **int** | Load Average | [optional] 
 **timezone** | **string** | Timezone offset from GMT | [optional] 
+**wifi** | [**\Swagger\Client\Model\Wifi**](Wifi.md) |  | [optional] 
 **status_net** | [**\Swagger\Client\Model\Network**](Network.md) |  | [optional] 
 **status_fwr** | [**\Swagger\Client\Model\Firmware**](Firmware.md) |  | [optional] 
 

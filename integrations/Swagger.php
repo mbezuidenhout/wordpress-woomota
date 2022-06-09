@@ -113,7 +113,7 @@ class Swagger extends Base {
 			$host = $user->get( 'tdm_user_host' );
 			$username = $user->get( 'tdm_user_username' );
 			$password = $user->get( 'tdm_user_password' );
-			$customTopic = $user->get( 'tdm_fulltopic' );
+			$customTopic = $user->get( 'tdm_user_fulltopic' );
 			try {
 				$apiKey = self::maybe_connect( $host, $username, $password, $customTopic, $cachedApiKey );
 				\update_user_meta( $user->ID, 'tdm_user_apikey', $apiKey, $cachedApiKey );

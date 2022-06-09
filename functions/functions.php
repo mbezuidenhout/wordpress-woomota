@@ -29,3 +29,35 @@ function woomota_page_title( $echo = true ) {
 		return $page_title;
 	}
 }
+
+/**
+ * @param int $t Duration
+ * @param bool $short Show the longest duration only
+ *
+ * Convert duration in seconds to days, hours, minutes
+ *
+ * @return string
+ */
+function durationToHumanReadable( $t, $short = false ) {
+	$s = $t % 60;
+	$m = floor( ( $t % 3600 ) / 60 );
+	$h = floor( ( $t % 86400 ) / 3600 );
+	$d = floor( ( $t % 2592000 ) / 86400 );
+	$parts = array();
+	if ( $d > 0 ) {
+		$parts[] = $d . " day" . ($d == 1 ? "" : "s");
+	}
+	if ( $h > 0 ) {
+		$parts[] = $h . " hour" . ($h == 1 ? "" : "s");
+	}
+	if ( $m > 0 ) {
+		$parts[] = $m . " minute" . ($m == 1 ? "" : "s");
+	}
+	if ( $s > 0 ) {
+		$parts[] = $d . " second" . ($s == 1 ? "" : "s");
+	}
+	if ( $short ) {
+		return $parts[0];
+	}
+	return implode(", ",  $parts);
+}

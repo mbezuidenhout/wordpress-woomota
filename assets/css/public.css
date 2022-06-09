@@ -4,6 +4,8 @@ ul.devices li.device {
 	margin-bottom: 4.235801032em;
 	text-align: center;
 	position: relative;
+	float: left;
+	padding: 8px;
 }
 
 .device-container {
@@ -13,19 +15,39 @@ ul.devices li.device {
 }
 
 .device-parameter {
-	width: 48%;
+	padding:5px;
+/*	width: 48%;
 	height: 100px;
 	margin-bottom: 2%;
 	flex-grow: 1;
+ */
 }
+
+.sc-sensor {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 1px solid #c3c4c7;
+}
+
+.show {
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.collapse:not(.show){display:none}
 
 .device-name {
 	width: 100%;
 }
 
+/*
 .device-parameter:nth-child(3n) {
 	width: 100%;
 }
+*/
 
 /*.site-main ul.devices.columns-3 li.device {
 	width: 30%;
@@ -37,5 +59,65 @@ ul.devices {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
+
+.sc-controller {
+	padding: 0 3px;
+	border: 1px solid #c3c4c7;
+}
+
+.sc-header {
+	white-space: nowrap;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 2px solid #c3c4c7;
+}
+
+.sc-controller button {
+	border: initial;
+	padding: initial;
+	color: initial !important;
+	background-color: initial !important;
+}
+
+.sc-controller button:focus,.sc-controller button:active, .sc-controller button:hover {
+	outline-offset: initial;
+	outline: initial;
+}
+
+.sc-header .signal-icon {
+	float:right;
+	margin:5px;
+}
+
+/** Signal level icon **/
+
+.signal-icon {
+	height: 18px;
+	width: 18px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.signal-icon .signal-bar {
+	width: 4px;
+	opacity: 30%;
+	background: #000000;
+}
+
+.signal-icon .signal-bar:nth-child(1) { height: 40%; }
+.signal-icon .signal-bar:nth-child(2) { height: 70%; }
+.signal-icon .signal-bar:nth-child(3) { height: 100%; }
+
+.signal-icon.weak .signal-bar:nth-child(1),
+.signal-icon.medium .signal-bar:nth-child(1),
+.signal-icon.medium .signal-bar:nth-child(2),
+.signal-icon.strong .signal-bar:nth-child(1),
+.signal-icon.strong .signal-bar:nth-child(2),
+.signal-icon.strong .signal-bar:nth-child(3)
+{ opacity: 100%; }
+
+/** End Signal level icon **/

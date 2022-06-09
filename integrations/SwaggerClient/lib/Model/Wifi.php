@@ -1,6 +1,6 @@
 <?php
 /**
- * Firmware
+ * Wifi
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * Firmware Class Doc Comment
+ * Wifi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Firmware implements ModelInterface, ArrayAccess
+class Wifi implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Firmware implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Firmware';
+    protected static $swaggerModelName = 'Wifi';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,11 @@ class Firmware implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'version' => 'string',
-'build_date_time' => 'string',
-'boot' => 'int',
-'hardware' => 'string'    ];
+        'ss_id' => 'string',
+'bss_id' => 'string',
+'channel' => 'int',
+'mode' => 'string',
+'signal' => 'int'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -67,10 +68,11 @@ class Firmware implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'version' => null,
-'build_date_time' => null,
-'boot' => null,
-'hardware' => null    ];
+        'ss_id' => null,
+'bss_id' => null,
+'channel' => null,
+'mode' => null,
+'signal' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -99,10 +101,11 @@ class Firmware implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'version' => 'Version',
-'build_date_time' => 'BuildDateTime',
-'boot' => 'Boot',
-'hardware' => 'Hardware'    ];
+        'ss_id' => 'SSId',
+'bss_id' => 'BSSId',
+'channel' => 'Channel',
+'mode' => 'Mode',
+'signal' => 'Signal'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -110,10 +113,11 @@ class Firmware implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'version' => 'setVersion',
-'build_date_time' => 'setBuildDateTime',
-'boot' => 'setBoot',
-'hardware' => 'setHardware'    ];
+        'ss_id' => 'setSsId',
+'bss_id' => 'setBssId',
+'channel' => 'setChannel',
+'mode' => 'setMode',
+'signal' => 'setSignal'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -121,10 +125,11 @@ class Firmware implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'version' => 'getVersion',
-'build_date_time' => 'getBuildDateTime',
-'boot' => 'getBoot',
-'hardware' => 'getHardware'    ];
+        'ss_id' => 'getSsId',
+'bss_id' => 'getBssId',
+'channel' => 'getChannel',
+'mode' => 'getMode',
+'signal' => 'getSignal'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -184,10 +189,11 @@ class Firmware implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
-        $this->container['build_date_time'] = isset($data['build_date_time']) ? $data['build_date_time'] : null;
-        $this->container['boot'] = isset($data['boot']) ? $data['boot'] : null;
-        $this->container['hardware'] = isset($data['hardware']) ? $data['hardware'] : null;
+        $this->container['ss_id'] = isset($data['ss_id']) ? $data['ss_id'] : null;
+        $this->container['bss_id'] = isset($data['bss_id']) ? $data['bss_id'] : null;
+        $this->container['channel'] = isset($data['channel']) ? $data['channel'] : null;
+        $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
+        $this->container['signal'] = isset($data['signal']) ? $data['signal'] : null;
     }
 
     /**
@@ -215,97 +221,121 @@ class Firmware implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets version
+     * Gets ss_id
      *
      * @return string
      */
-    public function getVersion()
+    public function getSsId()
     {
-        return $this->container['version'];
+        return $this->container['ss_id'];
     }
 
     /**
-     * Sets version
+     * Sets ss_id
      *
-     * @param string $version version
+     * @param string $ss_id ss_id
      *
      * @return $this
      */
-    public function setVersion($version)
+    public function setSsId($ss_id)
     {
-        $this->container['version'] = $version;
+        $this->container['ss_id'] = $ss_id;
 
         return $this;
     }
 
     /**
-     * Gets build_date_time
+     * Gets bss_id
      *
      * @return string
      */
-    public function getBuildDateTime()
+    public function getBssId()
     {
-        return $this->container['build_date_time'];
+        return $this->container['bss_id'];
     }
 
     /**
-     * Sets build_date_time
+     * Sets bss_id
      *
-     * @param string $build_date_time build_date_time
+     * @param string $bss_id bss_id
      *
      * @return $this
      */
-    public function setBuildDateTime($build_date_time)
+    public function setBssId($bss_id)
     {
-        $this->container['build_date_time'] = $build_date_time;
+        $this->container['bss_id'] = $bss_id;
 
         return $this;
     }
 
     /**
-     * Gets boot
+     * Gets channel
      *
      * @return int
      */
-    public function getBoot()
+    public function getChannel()
     {
-        return $this->container['boot'];
+        return $this->container['channel'];
     }
 
     /**
-     * Sets boot
+     * Sets channel
      *
-     * @param int $boot boot
+     * @param int $channel channel
      *
      * @return $this
      */
-    public function setBoot($boot)
+    public function setChannel($channel)
     {
-        $this->container['boot'] = $boot;
+        $this->container['channel'] = $channel;
 
         return $this;
     }
 
     /**
-     * Gets hardware
+     * Gets mode
      *
      * @return string
      */
-    public function getHardware()
+    public function getMode()
     {
-        return $this->container['hardware'];
+        return $this->container['mode'];
     }
 
     /**
-     * Sets hardware
+     * Sets mode
      *
-     * @param string $hardware hardware
+     * @param string $mode mode
      *
      * @return $this
      */
-    public function setHardware($hardware)
+    public function setMode($mode)
     {
-        $this->container['hardware'] = $hardware;
+        $this->container['mode'] = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets signal
+     *
+     * @return int
+     */
+    public function getSignal()
+    {
+        return $this->container['signal'];
+    }
+
+    /**
+     * Sets signal
+     *
+     * @param int $signal signal
+     *
+     * @return $this
+     */
+    public function setSignal($signal)
+    {
+        $this->container['signal'] = $signal;
 
         return $this;
     }
